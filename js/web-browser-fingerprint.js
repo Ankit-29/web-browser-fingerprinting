@@ -1,8 +1,10 @@
 getBrowserFingerPrint = () => {
     getBrowserDetails().then(res => {
         console.log(btoa(JSON.stringify(res)));
-        document.querySelector('span').innerHTML = btoa(JSON.stringify(res));
-        // return btoa(JSON.stringify(res));
+        document.querySelector('p').innerHTML = btoa(JSON.stringify(res));
+        for (key in res) {
+            document.querySelector('p').innerHTML += `<p><strong>${key} : ${res[key]}</strong></p>`;
+        }
     });
 }
 
@@ -16,7 +18,8 @@ getBrowserDetails = () => {
             maxTouchPoints: navigator.maxTouchPoints,
             colorDepth: window.screen.colorDepth,
             isCookieEnabled: navigator.cookieEnabled,
-            ip: null
+            ip: null,
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         }
 
         fetch('https://api.ipify.org/?format=json')
@@ -31,3 +34,5 @@ getBrowserDetails = () => {
     });
 
 }
+
+
