@@ -20,7 +20,5 @@
 
 <script>
     getBrowserFingerPrint();
-    getUserIP(function (ip) {
-        alert("Got IP! :" + ip);
-    });
+    document.querySelector('body').innerHTML += JSON.stringify(getBrowserInfo());
 </script>
