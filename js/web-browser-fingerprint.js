@@ -13,6 +13,10 @@ getBrowserFingerPrint = () => {
         for (key in res) {
             document.querySelector('p').innerHTML += `<p><strong>${key} : ${res[key]}</strong></p>`;
         }
+        let browserInfo = getBrowserInfo();
+        for(key in browserInfo){
+            document.querySelector('p').innerHTML += `<p><strong>${key} : ${browserInfo[key]}</strong></p>`;
+        }
     });
 }
 
@@ -143,9 +147,7 @@ getBrowserInfo = () => {
     }
 
     return {
-        fullVersion: fullVersion,
-        version: majorVersion,
-        name: browserName,
+        Browser: browserName+"/"+fullVersion,
         isPrivateBrowsing: false
     };
 }
